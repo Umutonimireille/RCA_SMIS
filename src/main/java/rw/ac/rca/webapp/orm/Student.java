@@ -3,9 +3,8 @@
  */
 package rw.ac.rca.webapp.orm;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author Aphrodice Rwagaju
@@ -37,6 +36,12 @@ public class Student extends Person{
 	@ManyToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
+
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "student")
+    @OneToMany(cascade = CascadeType.ALL , targetEntity = Mark.class)
+	@JoinColumn(name = "student_id", referencedColumnName = "id")
+	private Set<Mark> marks;
+
 	public String getAddressName(){
 		return this.address.getCity();
 	}

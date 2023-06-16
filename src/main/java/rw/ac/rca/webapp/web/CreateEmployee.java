@@ -75,6 +75,7 @@ public class CreateEmployee extends HttpServlet {
                 try {
                     employeeDAO.saveEmployee(employee);
                     request.setAttribute("success" , "Successfully created the employee" );
+                    System.out.println("employee created");
                     request.getRequestDispatcher("WEB-INF/createEmployee.jsp").forward(request , response);
                 }catch (Exception e){
                     request.setAttribute("error" , "Failed to create the Employee" );

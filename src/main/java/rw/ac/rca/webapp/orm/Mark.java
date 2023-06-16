@@ -12,13 +12,27 @@ public class Mark implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+    private int marksScored;
+    private  int totalMarks;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private  Student student;
+    private String grade;
 
-    private  String courseName ;
+    public Mark(Course courseName, int marksScored, int totalMarks, Student studentName, String grade) {
+        this.course = course;
+       this. marksScored = marksScored;
+       this. totalMarks = totalMarks;
+        this.student = student;
+        this.grade = grade;
+    }
 
-    private  String instructorName;
+    public Mark() {
 
-    private  int averageMarks;
-
+    }
 
     public int getId() {
         return id;
@@ -28,27 +42,45 @@ public class Mark implements Serializable {
         this.id = id;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public String getInstructorName() {
-        return instructorName;
+    public int getMarksScored() {
+        return marksScored;
     }
 
-    public void setInstructorName(String instructorName) {
-        this.instructorName = instructorName;
+    public void setMarksScored(int marksScored) {
+        this.marksScored = marksScored;
     }
 
-    public int getAverageMarks() {
-        return averageMarks;
+    public int getTotalMarks() {
+        return totalMarks;
     }
 
-    public void setAverageMarks(int averageMarks) {
-        this.averageMarks = averageMarks;
+    public void setTotalMarks(int totalMarks) {
+        this.totalMarks = totalMarks;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }
+
+

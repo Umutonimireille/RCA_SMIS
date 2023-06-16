@@ -108,6 +108,7 @@ public class EmployeeDAOImpl extends DAO  implements EmployeeDAO {
             return employee;
         } catch (Exception e) {
             rollback();
+            e.printStackTrace();
             return null;
         }
     }

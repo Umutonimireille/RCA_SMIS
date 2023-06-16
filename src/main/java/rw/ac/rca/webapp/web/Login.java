@@ -1,20 +1,18 @@
 package rw.ac.rca.webapp.web;
 
-import java.io.IOException;
+import org.apache.log4j.Logger;
+import rw.ac.rca.webapp.dao.UserDAO;
+import rw.ac.rca.webapp.dao.impl.UserDAOImpl;
+import rw.ac.rca.webapp.orm.User;
+import rw.ac.rca.webapp.util.UserRole;
+import rw.ac.rca.webapp.util.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.Logger;
-
-import rw.ac.rca.webapp.dao.UserDAO;
-import rw.ac.rca.webapp.dao.impl.UserDAOImpl;
-import rw.ac.rca.webapp.orm.User;
-import rw.ac.rca.webapp.util.UserRole;
-import rw.ac.rca.webapp.util.Util;
+import java.io.IOException;
 
 /**
  * Servlet implementation class Login
@@ -86,7 +84,7 @@ public class Login extends HttpServlet {
 					System.out.println(authenticatedUser.getFullName());
 					UserRole privilege = authenticatedUser.getUserRole();
 
-					LOG.info("The user [ " + privilege + " ] with privilege [ "
+					LOG.info("Th e user [ " + privilege + " ] with privilege [ "
 							+ authenticatedUser.getUserRole().getRoleDescription() + " ] successfuly logged in");
 
 					httpSession.setAttribute("authenticatedUser", authenticatedUser);

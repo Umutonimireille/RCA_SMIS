@@ -34,6 +34,7 @@ public class ListMark extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         String pageRedirect = request.getParameter("page");
+        String pageRedirectRole = request.getParameter("user_role");
 
         HttpSession httpSession = request.getSession();
         Object user = httpSession.getAttribute("authenticatedUser");
@@ -43,6 +44,7 @@ public class ListMark extends HttpServlet {
             if (pageRedirect.equals("marks") && request.getParameter("action").equals("list")) {
 
                 List<Mark> marks = markDAO.getAllMarks();
+                System.out.println("marks lemght ============= : " + marks.size());
 
                 httpSession.setAttribute("marks", marks);
                 UserRole[] userRoles = UserRole.values();

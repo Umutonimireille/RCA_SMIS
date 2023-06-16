@@ -87,6 +87,11 @@
             <version>1.6.1</version>
         </dependency>
         <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.7.0</version>
@@ -214,8 +219,8 @@
     </dependencies>
     <developers>
         <developer>
-            <name>Jazzy Bruno</name>
-            <email>jazzybruno45@gmail.com</email>
+            <name>Mireille</name>
+            <email>mireilleumutoni05@gmail.com</email>
             <roles>
                 <role>Software Programming Student</role>
             </roles>

@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -66,34 +64,21 @@ public class CreateParent extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageRedirect = request.getParameter("page");
         HttpSession httpSession = request.getSession();
         Object user = httpSession.getAttribute("authenticatedUser");
 
         if (pageRedirect != null) {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             if (pageRedirect.equals("createparent")) {
-//                Parent parent1 = parentDAO.getParentById(Integer.parseInt(request.getParameter("parent")));
-
                 Parent parent = new Parent();
-//                Student student =studentDAO.getStudentById(Integer.parseInt(request.getParameter("studentId")));
-//                System.out.println("gggghhgh"+ student);
 
                 parent.setFirstName(request.getParameter("firstName"));
                 parent.setLastName(request.getParameter("lastName"));
                 parent.setPhoneNumber(request.getParameter("phoneNumber"));
-//              parent.setStudent(student);
                 parent.setNationalId(request.getParameter("nationalId"));
-                parent.setSchoolFees(Long.parseLong(request.getParameter("schoolfees")));
-                try {
-                    parent.setDateOfBirth(simpleDateFormat.parse(request.getParameter("dateOfBirth")));
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-//
 
-                // Saving the parent;
                 try {
                     parentDAO.saveParent(parent);
                     request.setAttribute("successParent", "Successfully created the parent");
@@ -109,4 +94,6 @@ public class CreateParent extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
         }
     }
+
+
 }

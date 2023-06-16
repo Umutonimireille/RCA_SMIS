@@ -3,14 +3,9 @@
  */
 package rw.ac.rca.webapp.orm;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
 /**
  * @author Aphrodice Rwagaju
@@ -27,7 +22,11 @@ public abstract class Person implements Serializable{
 	private String lastName;
 	private Date dateOfBirth;
 	private String phoneNumber;
-	
+
+	public Person(String firstName, String lastName, String phoneNumber) {
+	}
+
+
 	public int getId() {
 		return id;
 	}
